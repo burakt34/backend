@@ -378,12 +378,49 @@ export interface ApiPostPost extends Schema.CollectionType {
     content: Attribute.RichText;
     img: Attribute.Media & Attribute.Required;
     slug: Attribute.String;
+    icerik: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbarBaloon';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiYeniYeni extends Schema.CollectionType {
+  collectionName: 'yenis';
+  info: {
+    singularName: 'yeni';
+    pluralName: 'yenis';
+    displayName: 'yeni';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    baslic: Attribute.String;
+    icerik: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::yeni.yeni', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::yeni.yeni', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -714,6 +751,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::post.post': ApiPostPost;
+      'api::yeni.yeni': ApiYeniYeni;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;

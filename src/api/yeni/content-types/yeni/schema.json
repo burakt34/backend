@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "yenis",
+  "info": {
+    "singularName": "yeni",
+    "pluralName": "yenis",
+    "displayName": "yeni",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "baslic": {
+      "type": "string"
+    },
+    "icerik": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
